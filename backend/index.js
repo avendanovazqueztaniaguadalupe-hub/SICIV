@@ -22,24 +22,25 @@ mongoose
   .then(() => console.log("💜 Conectado a MongoDB Atlas"))
   .catch((err) => console.error("❌ Error al conectar a MongoDB:", err));
 
-// Ruta principal
+// Ruta para probar el servidor
 app.get("/", (req, res) => {
-  res.send("Servidor activo y funcionando 🚀");
+  res.send("Servidor activo y corriendo en Render 🚀");
 });
 
-// Registrar rutas del sistema
+// Registrar rutas
 app.use("/api/auth", authRoutes);
 app.use("/api/inventario", inventarioRoutes);
 app.use("/api/ventas", ventasRoutes);
 app.use("/api/reportes", reportesRoutes);
 
-// Puerto
+// IMPORTANTE PARA RENDER
+// Render obliga a usar process.env.PORT
 const PORT = process.env.PORT || 4000;
 
-// ⭐ ESTE ES EL CAMBIO IMPORTANTE PARA RENDER ⭐
 app.listen(PORT, "0.0.0.0", () => {
   console.log(`🚀 Servidor corriendo en puerto ${PORT}`);
 });
+
 
 
 
