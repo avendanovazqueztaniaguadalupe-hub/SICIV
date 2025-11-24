@@ -6,7 +6,7 @@ import mongoose from "mongoose";
 // Importar rutas
 import authRoutes from "./routes/auth.js";
 import inventarioRoutes from "./routes/inventario.js";
-import reportesRoutes from "./routes/reportes.js"; // 📊 Nuevo módulo de reportes
+import reportesRoutes from "./routes/reportes.js";
 import ventasRoutes from "./routes/ventas.js";
 
 dotenv.config();
@@ -31,11 +31,16 @@ app.get("/", (req, res) => {
 app.use("/api/auth", authRoutes);
 app.use("/api/inventario", inventarioRoutes);
 app.use("/api/ventas", ventasRoutes);
-app.use("/api/reportes", reportesRoutes); // 📊 Reportes ya listo para Chart.js
+app.use("/api/reportes", reportesRoutes);
 
 // Puerto
 const PORT = process.env.PORT || 4000;
-app.listen(PORT, () => console.log(`🚀 Servidor corriendo en puerto ${PORT}`));
+
+// ⭐ ESTE ES EL CAMBIO IMPORTANTE PARA RENDER ⭐
+app.listen(PORT, "0.0.0.0", () => {
+  console.log(`🚀 Servidor corriendo en puerto ${PORT}`);
+});
+
 
 
 
